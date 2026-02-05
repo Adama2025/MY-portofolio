@@ -6,7 +6,6 @@
     <title>Adama Souka Gaye - Créateur de Contenu, Designer & Développeur Web</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Variables et styles généraux */
         :root {
             --primary-color: #4a6fa5;
             --secondary-color: #166088;
@@ -115,7 +114,6 @@
             background-color: #ff6b4a;
         }
 
-        /* Header et navigation */
         header {
             background-color: white;
             box-shadow: var(--shadow);
@@ -169,7 +167,6 @@
             cursor: pointer;
         }
 
-        /* Hero section */
         .hero {
             padding-top: 150px;
             background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
@@ -234,7 +231,6 @@
             font-size: 1.2rem;
         }
 
-        /* Section À propos */
         .about-content {
             display: flex;
             align-items: center;
@@ -283,7 +279,6 @@
         .skill-5 { width: 85%; }
         .skill-6 { width: 80%; }
 
-        /* Section Services */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -310,7 +305,6 @@
             margin-bottom: 1.5rem;
         }
 
-        /* Section Portfolio */
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -340,7 +334,6 @@
             padding: 20px;
         }
 
-        /* Section Contact */
         .contact-container {
             display: flex;
             flex-wrap: wrap;
@@ -412,7 +405,6 @@
             border: 1px solid #f5c6cb;
         }
 
-        /* Footer */
         footer {
             background-color: var(--dark-color);
             color: white;
@@ -473,7 +465,6 @@
             color: rgba(255, 255, 255, 0.7);
         }
 
-        /* Responsive */
         @media (max-width: 992px) {
             h1 {
                 font-size: 2.2rem;
@@ -597,7 +588,6 @@
                 </div>
                 
                 <div class="hero-image">
-                    <!-- Image de profil (à remplacer par la vôtre) -->
                     <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Adama Souka Gaye">
                 </div>
             </div>
@@ -774,7 +764,7 @@
                 </div>
                 
                 <div class="portfolio-item">
-                    <div class="portfolio-img" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w-800&q=80');"></div>
+                    <div class="portfolio-img" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
                     <div class="portfolio-content">
                         <h3>Application Mobile</h3>
                         <p>Design UX/UI pour une application de suivi de fitness avec tableau de bord personnalisé.</p>
@@ -841,7 +831,11 @@
                 
                 <div class="contact-form">
                     <h3>Envoyez-moi un message</h3>
-                    <form id="contactForm" action="https://formspree.io/f/xjvnkkdp" method="POST">
+                    <!-- FORMSPREE FORM - Remplacer avec votre email -->
+                    <form id="contactForm" action="https://formspree.io/f/mjvnoerj" method="POST">
+                        <input type="hidden" name="_subject" value="Nouveau message depuis votre portfolio">
+                        <input type="hidden" name="_replyto" value="livesoukagaye2002@gmail.com">
+                        
                         <div class="form-group">
                             <input type="text" class="form-control" name="name" placeholder="Votre nom" required>
                         </div>
@@ -931,11 +925,14 @@
             e.preventDefault();
             
             // Afficher un message de chargement
+            const originalText = submitBtn.innerHTML;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
             submitBtn.disabled = true;
             
             try {
                 const formData = new FormData(contactForm);
+                
+                // Envoyer les données à Formspree
                 const response = await fetch(contactForm.action, {
                     method: 'POST',
                     body: formData,
@@ -955,11 +952,16 @@
                     formMessage.scrollIntoView({ behavior: 'smooth' });
                 } else {
                     // Erreur
-                    throw new Error('Erreur lors de l\'envoi du message');
+                    const data = await response.json();
+                    if (data.errors) {
+                        throw new Error(data.errors.map(err => err.message).join(', '));
+                    } else {
+                        throw new Error('Erreur lors de l\'envoi du message');
+                    }
                 }
             } catch (error) {
                 // Erreur réseau ou autre
-                formMessage.textContent = 'Une erreur s\'est produite lors de l\'envoi du message. Veuillez réessayer ou me contacter directement par email.';
+                formMessage.textContent = 'Une erreur s\'est produite. Veuillez me contacter directement par email à livesoukagaye2002@gmail.com ou par téléphone au +221 781300258.';
                 formMessage.className = 'alert alert-error';
                 formMessage.style.display = 'block';
                 
@@ -967,7 +969,7 @@
                 formMessage.scrollIntoView({ behavior: 'smooth' });
             } finally {
                 // Réinitialiser le bouton
-                submitBtn.innerHTML = 'Envoyer le message';
+                submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;
                 
                 // Cacher le message après 10 secondes
@@ -1007,6 +1009,41 @@
         if (skillsSection) {
             observer.observe(skillsSection);
         }
+        
+        // Alternative si Formspree ne fonctionne pas
+        function setupEmailFallback() {
+            const form = document.getElementById('contactForm');
+            form.removeEventListener('submit', form._submitHandler);
+            
+            form._submitHandler = function(e) {
+                e.preventDefault();
+                
+                const name = form.querySelector('[name="name"]').value;
+                const email = form.querySelector('[name="email"]').value;
+                const subject = form.querySelector('[name="subject"]').value;
+                const message = form.querySelector('[name="message"]').value;
+                
+                const mailtoLink = `mailto:livesoukagaye2002@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+                
+                window.location.href = mailtoLink;
+                
+                // Afficher un message de confirmation
+                formMessage.textContent = 'Redirection vers votre client email... Si rien ne se passe, envoyez directement à livesoukagaye2002@gmail.com';
+                formMessage.className = 'alert alert-success';
+                formMessage.style.display = 'block';
+                
+                // Réinitialiser le formulaire
+                setTimeout(() => {
+                    form.reset();
+                    formMessage.style.display = 'none';
+                }, 3000);
+            };
+            
+            form.addEventListener('submit', form._submitHandler);
+        }
+        
+        // Optionnel: Activer la solution de repli après un délai
+        // setTimeout(setupEmailFallback, 5000);
     </script>
 </body>
 </html>
