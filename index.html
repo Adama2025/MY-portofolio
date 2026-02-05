@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adama Souka Gaye - Créateur de Contenu & Designer UX/Logo</title>
+    <title>Adama Souka Gaye - Créateur de Contenu, Designer & Développeur Web</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Variables et styles généraux */
@@ -273,12 +273,15 @@
             height: 100%;
             background-color: var(--primary-color);
             border-radius: 5px;
+            transition: width 1.5s ease;
         }
 
         .skill-1 { width: 95%; }
         .skill-2 { width: 90%; }
         .skill-3 { width: 85%; }
         .skill-4 { width: 80%; }
+        .skill-5 { width: 85%; }
+        .skill-6 { width: 80%; }
 
         /* Section Services */
         .services-grid {
@@ -294,6 +297,7 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
             text-align: center;
+            height: 100%;
         }
 
         .service-card:hover {
@@ -304,6 +308,36 @@
             font-size: 2.5rem;
             color: var(--primary-color);
             margin-bottom: 1.5rem;
+        }
+
+        /* Section Portfolio */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-item {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .portfolio-img {
+            height: 200px;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .portfolio-content {
+            padding: 20px;
         }
 
         /* Section Contact */
@@ -357,6 +391,25 @@
             color: var(--primary-color);
             margin-right: 15px;
             margin-top: 5px;
+        }
+
+        .alert {
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
         }
 
         /* Footer */
@@ -513,6 +566,7 @@
                     <li><a href="#accueil">Accueil</a></li>
                     <li><a href="#apropos">À propos</a></li>
                     <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -525,8 +579,8 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <h1>Adama Souka Gaye</h1>
-                    <h2>Créateur de Contenu & Designer UX/Logo</h2>
-                    <p>Je suis créateur de contenu, designer UX/UI et spécialiste en création de logos. Avec 6 ans d'expérience dans l'art et une formation en Génie Informatique à CIGA, je combine créativité artistique et expertise technique pour des designs qui captivent et des expériences utilisateur mémorables.</p>
+                    <h2>Créateur de Contenu, Designer & Développeur Web</h2>
+                    <p>Je suis créateur de contenu, designer UX/UI, spécialiste en création de logos, développeur de sites web et expert en maintenance informatique. Avec 6 ans d'expérience dans l'art et une formation en Génie Informatique à CIGA, je combine créativité artistique et expertise technique pour des solutions digitales complètes.</p>
                     
                     <div class="contact-info">
                         <div class="contact-item">
@@ -544,7 +598,7 @@
                 
                 <div class="hero-image">
                     <!-- Image de profil (à remplacer par la vôtre) -->
-                    <img src="photo_2026-02-04_09-43-45.jpg" alt="Adama Souka Gaye">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Adama Souka Gaye">
                 </div>
             </div>
         </div>
@@ -565,7 +619,7 @@
                     
                     <p>En tant que créateur de contenu, je maîtrise les techniques de narration visuelle et textuelle pour engager les audiences. Mon expertise en design UX me permet de créer des interfaces intuitives et agréables, tandis que ma spécialisation en création de logos m'aide à construire des identités visuelles fortes et mémorables.</p>
                     
-                    <p>Je crois en un design qui parle aux émotions tout en répondant aux besoins fonctionnels. Chaque projet est pour moi une nouvelle opportunité de créer quelque chose d'unique et impactant.</p>
+                    <p>Je propose également des services complets de création de sites internet et de maintenance informatique, garantissant des solutions digitales robustes et performantes.</p>
                 </div>
                 
                 <div class="skills">
@@ -603,11 +657,31 @@
                     
                     <div class="skill-item">
                         <div class="skill-name">
-                            <span>Conception graphique</span>
+                            <span>Développement Web</span>
                             <span>80%</span>
                         </div>
                         <div class="skill-bar">
                             <div class="skill-level skill-4"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Maintenance Informatique</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level skill-5"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Conception graphique</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level skill-6"></div>
                         </div>
                     </div>
                 </div>
@@ -622,208 +696,4 @@
                 <h2>Mes Services</h2>
             </div>
             
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-video"></i>
-                    </div>
-                    <h3>Création de Contenu</h3>
-                    <p>Production de contenu visuel et textuel engageant pour les plateformes digitales. Stratégie de contenu adaptée à votre audience et à vos objectifs.</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-palette"></i>
-                    </div>
-                    <h3>Design UX/UI</h3>
-                    <p>Conception d'interfaces utilisateur intuitives et esthétiques. Recherche utilisateur, wireframes, prototypes et design d'expérience optimale.</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-pen-nib"></i>
-                    </div>
-                    <h3>Création de Logos</h3>
-                    <p>Design d'identités visuelles fortes et mémorables. Création de logos uniques qui représentent l'essence de votre marque.</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-brush"></i>
-                    </div>
-                    <h3>Design Graphique</h3>
-                    <p>Conception de supports visuels variés : affiches, brochures, bannières, illustrations et tous types de visuels communicants.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Contact -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-title-center">
-                <h2>Contactez-moi</h2>
-                <p>N'hésitez pas à me contacter pour discuter de votre projet</p>
-            </div>
-            
-            <div class="contact-container">
-                <div class="contact-info-section">
-                    <h3>Informations de contact</h3>
-                    
-                    <div class="contact-item-large">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h4>Téléphone</h4>
-                            <p>+221 781300258</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item-large">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h4>Email</h4>
-                            <p>livesoukagaye2002@gmail.com</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item-large">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h4>Formation</h4>
-                            <p>Génie Informatique à CIGA</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item-large">
-                        <i class="fas fa-briefcase"></i>
-                        <div>
-                            <h4>Expérience</h4>
-                            <p>6 ans dans l'art et le design</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="contact-form">
-                    <h3>Envoyez-moi un message</h3>
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Votre nom" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Votre email" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Sujet" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <textarea class="form-control" placeholder="Votre message" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn">Envoyer le message</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-col">
-                    <h3>Adama Souka Gaye</h3>
-                    <p>Créateur de contenu et designer UX/Logo passionné, alliant expertise artistique et technique pour des designs impactants.</p>
-                    
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Services</h3>
-                    <ul>
-                        <li><a href="#services">Création de contenu</a></li>
-                        <li><a href="#services">Design UX/UI</a></li>
-                        <li><a href="#services">Création de logos</a></li>
-                        <li><a href="#services">Design graphique</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Contact rapide</h3>
-                    <p><i class="fas fa-phone"></i> +221 781300258</p>
-                    <p><i class="fas fa-envelope"></i> livesoukagaye2002@gmail.com</p>
-                    <a href="#contact" class="btn btn-accent">Me contacter</a>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                <p>&copy; 2026 Adama Souka Gaye. Tous droits réservés.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Menu mobile toggle
-        const menuToggle = document.getElementById('menu-toggle');
-        const navLinks = document.getElementById('nav-links');
-        
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-        
-        // Fermer le menu mobile en cliquant sur un lien
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
-        
-        // Form submission (simulation)
-        const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Merci pour votre message ! Je vous répondrai dans les plus brefs délais.');
-            contactForm.reset();
-        });
-        
-        // Animation des barres de compétences au défilement
-        function animateSkills() {
-            const skillBars = document.querySelectorAll('.skill-level');
-            skillBars.forEach(bar => {
-                const width = bar.style.width;
-                bar.style.width = '0';
-                
-                setTimeout(() => {
-                    bar.style.width = width;
-                }, 300);
-            });
-        }
-        
-        // Observer pour déclencher l'animation des compétences
-        const observerOptions = {
-            threshold: 0.5
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateSkills();
-                }
-            });
-        }, observerOptions);
-        
-        const skillsSection = document.querySelector('.skills');
-        if (skillsSection) {
-            observer.observe(skillsSection);
-        }
-    </script>
-</body>
-
-</html>
+            <div class="ser
